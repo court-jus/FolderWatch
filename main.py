@@ -41,7 +41,7 @@ class FolderWatch(object):
         """Refresh the icon status."""
         if self._next_update is None or time.time() > self._next_update:
             self._refresh()
-            self._next_update = time.time() + 0.5
+            self._next_update = time.time() + 0.8
         return True
 
     def right_click_event(self, icon, button, time):
@@ -92,7 +92,7 @@ class FolderWatch(object):
 def main():
     """Launch the app."""
     app = FolderWatch()
-    gobject.idle_add(app.refresh)
+    gobject.timeout_add(1, app.refresh)
     gtk.main()
 
 if __name__ == "__main__":
